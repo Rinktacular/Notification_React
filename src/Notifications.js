@@ -3,9 +3,10 @@ import { io } from "socket.io-client";
 
 const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
-  const socket = io("http://127.0.0.1:5000/notifications");
 
   useEffect(() => {
+    const socket = io("http://127.0.0.1:5000/notifications");
+
     // Connect to our WebSocket server
     socket.on("connect", () => {
       console.log("Conneted to WebSocket server!");
@@ -25,7 +26,7 @@ const Notifications = () => {
     return () => {
       socket.disconnect();
     };
-  }, [socket]);
+  }, []);
 
   return (
     <div>
